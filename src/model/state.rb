@@ -2,7 +2,7 @@ module Model
     # submodulo
     module Direction
         UP = :up
-        RIGHT = : right
+        RIGHT = :right
         DOWN = :down
         LEFT = :left 
     end
@@ -19,7 +19,7 @@ module Model
     class Snake < Struct.new(:positions)
     end 
 
-    class State < Struct.new(:snake,:food,:grid,:next_direction)
+    class State < Struct.new(:snake,:food,:grid,:curr_direction,:game_finished)
     end
 
     def self.initial_state
@@ -30,7 +30,8 @@ module Model
             ]),
             Model::Food.new(4,4),
             Model::Grid.new(8,12),
-            Direction::DOWN
+            Direction::DOWN,
+            false
         )
     end
     
